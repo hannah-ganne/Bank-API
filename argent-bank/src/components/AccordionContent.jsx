@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { SectionContext } from "../context/Context"
+import { SectionContext } from "../utils/context/Context"
 
 export default function Content({ children }) {
     let { isOpen, setIsOpen } = useContext(SectionContext)
