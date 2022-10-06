@@ -25,6 +25,10 @@ html {
   .bg-dark {
     background-color: #12002b;
   }
+
+  .bg-gray {
+    background-color: #dfe6ed;
+  }
   
   .sr-only {
     border: 0 !important;
@@ -274,6 +278,10 @@ html {
     color: #fff;
     margin-bottom: 2rem;
   }
+
+  .ft-dark {
+    color: #000000;
+  }
   
   .transaction-button {
     display: block;
@@ -286,6 +294,100 @@ html {
     background-color: #00bc77;
     color: #fff;
   }
+
+[data-accordion] {
+    margin: 0 auto;
+    width: 80%;
+}
+
+[data-panel-title] {
+    color: hsl(238, 29%, 16%);
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    border-bottom: 2px solid #9eadba;
+    cursor: pointer;
+    transition: border 0.2s, font-weight 0.2s;
+}
+
+[data-accordion-header] {
+  display: flex;
+  padding: 0 1rem 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+[data-accordion-header] svg {
+  visibility: hidden;
+}
+
+
+[data-panel-title-grid] {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+[data-panel-title-grid] p {
+  margin: 0;
+}
+
+/* [data-panel-title]::before {
+    display: inline;
+    content: url('./assets/images/icon-arrow-down.svg');
+} */
+
+/* [data-panel-title].expanded::before {
+    content: url('./assets/images/icon-arrow-down.svg');
+    rotate: 180deg;
+} */
+
+[data-panel-title].disabled {
+    background: #f3f6fc;
+    color: #99c9ff;
+    border: 1px solid #cee4fd;
+    cursor: not-allowed;
+}
+
+[data-panel-title].disabled::before {
+    content: 'x';
+}
+
+[data-panel-title].expanded {
+  border-bottom: none;
+}
+
+[data-panel-content] {
+  background-color: white;
+  text-align: left;
+}
+
+[data-panel-content].folded {
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    font-size: 0;
+    transition: height 0.2s, visibility 0.2s, padding 0.2s;
+}
+
+[data-panel-content].expanded {
+    padding: 1em;
+    visibility: visible;
+    height: auto;
+    padding: 1rem 1rem 1rem 7rem;
+    border-bottom: 1px solid #edf2f8;
+}
+
+[data-panel-content].expanded > p {
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+[data-panel-content].expanded [data-panel-title] {
+  visibility: hidden;
+}
   
   @media (min-width: 720px) {
     .account {
