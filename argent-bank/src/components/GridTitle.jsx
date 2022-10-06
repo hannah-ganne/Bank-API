@@ -1,10 +1,12 @@
-export default function GridTitle() {
+export default function GridTitle({ date, description, amount, balance }) {
+    
+
     return (
         <div data-panel-title-grid>
-            <p>June 20th, 2020</p>
-            <p>Golden Sun Bakery</p>
-            <p>$5.00</p>
-            <p>$2082.79</p>
+            <p>{date}</p>
+            <p>{description}</p>
+            <p>{isNaN(amount) ? `${amount}` : `$${amount}`}</p>
+            <p>{isNaN(balance) ? `${balance}` : `$${balance}`}</p>
         </div>
     )
 }
