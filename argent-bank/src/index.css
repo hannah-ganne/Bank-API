@@ -9,6 +9,7 @@ html {
   body {
     margin: 0;
     height: 100vh;
+    color: #2b3b48;
   }
 
   #root {
@@ -274,9 +275,16 @@ html {
     padding: 10px;
   }
   
-  .header {
+  .header, .trans-header {
     color: #fff;
     margin-bottom: 2rem;
+  }
+
+  .trans-header {
+    padding: 1rem 0;
+    border-top: 1px solid #c3cfd9;
+    border-bottom: 1px solid #c3cfd9;
+    background-color: white;
   }
 
   .ft-dark {
@@ -335,15 +343,16 @@ html {
   margin: 0;
 }
 
-/* [data-panel-title]::before {
+[data-panel-title]::before {
     display: inline;
-    content: url('./assets/images/icon-arrow-down.svg');
-} */
+    content: url('./assets/images/arrow-down-icon.png');
+}
 
-/* [data-panel-title].expanded::before {
-    content: url('./assets/images/icon-arrow-down.svg');
-    rotate: 180deg;
-} */
+[data-panel-title].expanded::before {
+    content: url('./assets/images/arrow-down-icon.png');
+    transform: rotate3d(1, 0, 0, 3rad);
+    transition: transform 0.2s ease-out;
+}
 
 [data-panel-title].disabled {
     background: #f3f6fc;
@@ -358,6 +367,10 @@ html {
 
 [data-panel-title].expanded {
   border-bottom: none;
+}
+
+[data-panel-title].expanded {
+  transform: rotate(-90)
 }
 
 [data-panel-content] {
