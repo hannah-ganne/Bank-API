@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = [
     {
-        id: 1,
+        id: 0,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 50,
@@ -12,7 +12,7 @@ const initialState = [
         notes: ''
     },
     {
-        id: 2,
+        id: 1,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 40,
@@ -22,7 +22,7 @@ const initialState = [
         notes: ''
     },
     {
-        id: 3,
+        id: 2,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 30,
@@ -32,7 +32,7 @@ const initialState = [
         notes: ''
     },
     {
-        id: 4,
+        id: 3,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 20,
@@ -42,7 +42,7 @@ const initialState = [
         notes: ''
     },
     {
-        id: 5,
+        id: 4,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 10,
@@ -52,7 +52,7 @@ const initialState = [
         notes: ''
     },
     {
-        id: 6,
+        id: 5,
         date: '20 Jun 2022',
         description: 'Golden Sun Bakery',
         amount: 5,
@@ -67,8 +67,14 @@ export const transactionSlice = createSlice({
     name: 'transaction',
     initialState,
     reducers: {
-        setCategory: (state, action) => (state = action.payload),
-        setNotes: (state, action) => (state = action.payload),
+        setCategory: (state, action) => {
+            const objIndex = state.findIndex(obj => obj.id === action.payload.id)
+            state[objIndex].category = action.payload.category
+        },
+        setNotes: (state, action) => {
+            const objIndex = state.findIndex(obj => obj.id === action.payload.id)
+            state[objIndex].notes = action.payload.notes
+        },
     }
 })
 
