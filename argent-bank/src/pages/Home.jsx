@@ -9,9 +9,10 @@ export default function Home() {
         <Main>
             <Hero />
             <Section className="features">
-                <h2 class="sr-only">Features</h2>
+                <h2 className="sr-only">Features</h2>
                 {features.map(item =>
                     <Feature
+                        key={item.alt}
                         img={item.img}
                         alt={item.alt}
                         title={item.title}
