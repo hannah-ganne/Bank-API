@@ -12,12 +12,11 @@ import TransactionContent from '../components/TransactionContent'
 
 
 export default function Transactions() {
-
     const transactions = useSelector(selectTransaction)
 
     return (
         <Main className="main bg-gray">
-            <div className="header ft-dark">
+            <div className="trans-header ft-dark">
                 <h3 className="account-title">Argent Bank Checking (x8349)</h3>
                 <p className="account-amount">$2,082.79</p>
                 <p className="account-amount-description">Available balance</p>
@@ -32,11 +31,11 @@ export default function Transactions() {
                         balance="BALANCE"
                     />
                 </header>
-                {transactions.map(item => {
+                {transactions.map((item, index) => {
                     return (
                         <AccordionSection key={item.id}>
                             <AccordionTitle>
-                                <FontAwesomeIcon icon={faAngleDown} size="lg" />
+                                {/* <FontAwesomeIcon icon={faAngleDown} size="lg" className="arrow" /> */}
                                 <GridTitle
                                     date={item.date}
                                     description={item.description}
@@ -45,7 +44,12 @@ export default function Transactions() {
                                 />
                             </AccordionTitle>
                             <AccordionContent>
-                                <TransactionContent type={item.type} category={item.category} notes={item.notes} />
+                                <TransactionContent
+                                    index={index}
+                                    type={item.type}
+                                    category={item.category}
+                                    notes={item.notes} 
+                                />
                             </AccordionContent>
                         </AccordionSection>
                     )
