@@ -6,8 +6,15 @@ import AccordionContent from '../components/AccordionContent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import GridTitle from '../components/GridTitle'
+import { useSelector, useDispatch } from 'react-redux'
+import { setCategory, setNotes, selectTransaction } from '../utils/redux/transactionSlice'
+import TransactionContent from '../components/TransactionContent'
+
 
 export default function Transactions() {
+
+    const transactions = useSelector(selectTransaction)
+
     return (
         <Main className="main bg-gray">
             <div className="header ft-dark">
@@ -16,62 +23,33 @@ export default function Transactions() {
                 <p className="account-amount-description">Available balance</p>
             </div>
             <Accordion>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        <p>Transaction Type: Electronic</p>
-                        <p>Category: Food</p>
-                        <p>Notes:</p>
-                    </AccordionContent>
-                </AccordionSection>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        Transaction 1
-                    </AccordionContent>
-                </AccordionSection>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        Transaction 1
-                    </AccordionContent>
-                </AccordionSection>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        Transaction 1
-                    </AccordionContent>
-                </AccordionSection>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        Transaction 1
-                    </AccordionContent>
-                </AccordionSection>
-                <AccordionSection>
-                    <AccordionTitle>
-                        <FontAwesomeIcon icon={faAngleDown} size="lg" />
-                        <GridTitle />
-                    </AccordionTitle>
-                    <AccordionContent>
-                        Transaction 1
-                    </AccordionContent>
-                </AccordionSection>
+                <header data-accordion-header>
+                    <FontAwesomeIcon icon={faAngleDown} size="lg" />
+                    <GridTitle 
+                        date="DATE"
+                        description="DESCRIPTION"
+                        amount="AMOUNT"
+                        balance="BALANCE"
+                    />
+                </header>
+                {transactions.map(item => {
+                    return (
+                        <AccordionSection key={item.id}>
+                            <AccordionTitle>
+                                <FontAwesomeIcon icon={faAngleDown} size="lg" />
+                                <GridTitle
+                                    date={item.date}
+                                    description={item.description}
+                                    amount={item.amount}
+                                    balance={item.balance}
+                                />
+                            </AccordionTitle>
+                            <AccordionContent>
+                                <TransactionContent type={item.type} category={item.category} notes={item.notes} />
+                            </AccordionContent>
+                        </AccordionSection>
+                    )
+                })}
             </Accordion>
         </Main>
     )
