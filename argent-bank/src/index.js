@@ -20,7 +20,7 @@ root.render(
             <Route path="/" element={<Home />} />
             <Route path="signin" element={<Signin />} />
             <Route path="user" element={<User />} />
-            <Route path="transactions" element={<Transactions />} />
+            <Route path="transactions/:id" element={<Transactions />} />
           </Route>
         </Routes>
       </BrowserRouter>
