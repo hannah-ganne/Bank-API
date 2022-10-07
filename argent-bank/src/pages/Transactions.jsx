@@ -24,7 +24,7 @@ export default function Transactions() {
 
     return (
         <Main className="main bg-gray">
-            {!user.token && (<Navigate to="/" replace={true} />)}
+            {!user.token && (<Navigate to="/login" replace={true} />)}
             <div className="trans-header ft-dark">
                 <h3 className="account-title">{accounts[id].title}</h3>
                 <p className="account-amount">${accounts[id].amount}</p>

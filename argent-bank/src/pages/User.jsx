@@ -36,7 +36,7 @@ export default function User() {
 
     return (
         <Main className="main bg-dark">
-            {!user.token && (<Navigate to="/" replace={true} />)}
+            {!user.token && (<Navigate to="/login" replace={true} />)}
             <div className="header">
                 <h1>Welcome back<br />{!open && (`${user.firstName} ${user.lastName}!`)}</h1>
                 {open ?
