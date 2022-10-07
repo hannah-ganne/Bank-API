@@ -1,3 +1,3 @@
 export default function InputTitle({ id, label }) {
-    return <label for={id}>{label}</label>
+    return <label htmlFor={id}>{label}</label>
 }
