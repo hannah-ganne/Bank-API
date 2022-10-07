@@ -69,7 +69,13 @@ export const editName = createAsyncThunk(
 export const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        logout: (state, action) => {
+            state.firstName = ""
+            state.lastName = ""
+            state.token = ""
+        }
+    },
     extraReducers: {
         [login.pending]: (state, action) => {
             state.isLoading = true
@@ -115,5 +121,9 @@ export const userSlice = createSlice({
         
     }
 })
+
+export const selectUser = (state) => state.user
+
+export const { logout } = userSlice.actions
 
 export default userSlice.reducer
