@@ -18,8 +18,8 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} >
             <Route path="/" element={<Home />} />
-            <Route path="signin" element={<Signin />} />
-            <Route path="user" element={<User />} />
+            <Route path="login" element={<Signin />} />
+            <Route path="profile" element={<User />} />
             <Route path="transactions/:id" element={<Transactions />} />
           </Route>
         </Routes>
