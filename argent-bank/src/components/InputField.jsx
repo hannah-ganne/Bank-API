@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 export default function InputField({id, type, size = 20, value, setValue, onKeyPress }) {
 
     return (
