@@ -30,7 +30,7 @@ export default function Signin() {
                 <h1>Sign In</h1>
                 {user.hasError && <p>There is an error</p>}
                 {(user.token && !user.isLoading && !user.hasError) && (
-                    <Navigate to="/user" replace={true} />
+                    <Navigate to="/profile" replace={true} />
                 )}
                 <form onSubmit={handleSubmit}>
                     <Input className="input-wrapper">
