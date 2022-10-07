@@ -6,8 +6,8 @@ import AccordionContent from '../components/AccordionContent'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import GridTitle from '../components/GridTitle'
-import { useSelector, useDispatch } from 'react-redux'
-import { setCategory, setNotes, selectTransaction } from '../utils/redux/transactionSlice'
+import { useSelector } from 'react-redux'
+import { selectTransaction } from '../utils/redux/transactionSlice'
 import TransactionContent from '../components/TransactionContent'
 
 
@@ -35,7 +35,6 @@ export default function Transactions() {
                     return (
                         <AccordionSection key={item.id}>
                             <AccordionTitle>
-                                {/* <FontAwesomeIcon icon={faAngleDown} size="lg" className="arrow" /> */}
                                 <GridTitle
                                     date={item.date}
                                     description={item.description}
