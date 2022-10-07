@@ -9,17 +9,26 @@ import GridTitle from '../components/GridTitle'
 import { useSelector } from 'react-redux'
 import { selectTransaction } from '../utils/redux/transactionSlice'
 import TransactionContent from '../components/TransactionContent'
-
+import { accounts } from '../assets/data/accounts'
+import { useParams } from 'react-router-dom'
+import { selectUser } from '../utils/redux/userSlice'
+import { Navigate } from 'react-router-dom'
 
 export default function Transactions() {
     const transactions = useSelector(selectTransaction)
+    let { id } = useParams();
+    const { checking, savings, credit } = transactions
+    const account = [checking, savings, credit]
+
+    const user = useSelector(selectUser)
 
     return (
         <Main className="main bg-gray">
+            {!user.token && (<Navigate to="/" replace={true} />)}
             <div className="trans-header ft-dark">
-                <h3 className="account-title">Argent Bank Checking (x8349)</h3>
-                <p className="account-amount">$2,082.79</p>
-                <p className="account-amount-description">Available balance</p>
+                <h3 className="account-title">{accounts[id].title}</h3>
+                <p className="account-amount">${accounts[id].amount}</p>
+                <p className="account-amount-description">{accounts[id].description}</p>
             </div>
             <Accordion>
                 <header data-accordion-header>
@@ -31,7 +40,7 @@ export default function Transactions() {
                         balance="BALANCE"
                     />
                 </header>
-                {transactions.map((item, index) => {
+                {account[id].map((item, index) => {
                     return (
                         <AccordionSection key={item.id}>
                             <AccordionTitle>
