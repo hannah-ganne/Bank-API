@@ -30,7 +30,7 @@ export default function Header() {
                     user.token ?
                     (
                         <div className="header-user">       
-                            <Link to="/user" className="main-nav-item">
+                            <Link to="/profile" className="main-nav-item">
                             <FontAwesomeIcon icon={faUserCircle} />
                             {user.firstName}    
                             </Link>
@@ -41,7 +41,7 @@ export default function Header() {
                         </div>
                     ) :
                     (
-                        <Link to="/signin" className="main-nav-item">
+                        <Link to="/login" className="main-nav-item">
                             <FontAwesomeIcon icon={faUserCircle} />
                             Sign In
                         </Link>
